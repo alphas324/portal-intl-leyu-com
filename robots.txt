@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://alphas324.github.io/portal-intl-leyu-com/sitemap.xml

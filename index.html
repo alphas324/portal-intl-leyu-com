@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日常索引 · leyu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f7fbfc;
+      color: #1e2b3a;
+      line-height: 1.6;
+      padding: 0 1.25rem;
+    }
+
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.5rem 0 2.5rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.25rem;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: #0f2c33;
+    }
+
+    .hero h1 span {
+      color: #1b8a7a;
+    }
+
+    .hero p {
+      max-width: 600px;
+      margin: 1.25rem auto 0;
+      font-size: 1.1rem;
+      color: #345e62;
+    }
+
+    .hero .meta-line {
+      margin-top: 1.75rem;
+      display: inline-block;
+      background: #ddeeec;
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #1b6b62;
+    }
+
+    /* 网格卡片区 = 优势 & 说明混合 */
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin: 2.8rem 0;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 1.75rem 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 40, 40, 0.04);
+      border: 1px solid #d0e6e5;
+      transition: box-shadow 0.2s;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 20px rgba(20, 100, 100, 0.07);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.6rem;
+      font-weight: 500;
+      color: #0d4240;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .card h3::before {
+      content: "▹";
+      color: #1b9a89;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      color: #2b4f50;
+      font-size: 0.98rem;
+    }
+
+    .card .tag {
+      display: inline-block;
+      background: #e5f3f1;
+      padding: 0.2rem 0.8rem;
+      border-radius: 30px;
+      margin-top: 0.8rem;
+      font-size: 0.78rem;
+      color: #16665b;
+    }
+
+    /* 说明摘要区 —— 更长叙述 */
+    .essay-block {
+      background: #edf7f5;
+      border-radius: 24px;
+      padding: 2rem 1.8rem;
+      margin: 2rem 0 2.5rem;
+      border-left: 6px solid #1a8f7b;
+    }
+
+    .essay-block h2 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: #08322e;
+      margin-bottom: 1rem;
+    }
+
+    .essay-block p {
+      color: #1d4746;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .essay-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    .essay-block a {
+      color: #106b5e;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      font-weight: 500;
+    }
+
+    /* FAQ 摘要 */
+    .faq-summary {
+      margin: 2.8rem 0;
+    }
+
+    .faq-summary h2 {
+      font-size: 1.3rem;
+      font-weight: 500;
+      color: #0b3d3a;
+      margin-bottom: 1.2rem;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid #cde0df;
+      padding: 1rem 0;
+    }
+
+    .faq-question {
+      font-weight: 500;
+      color: #134e46;
+      margin-bottom: 0.3rem;
+      display: flex;
+      justify-content: space-between;
+      cursor: default;
+    }
+
+    .faq-answer {
+      color: #305a58;
+      font-size: 0.95rem;
+      padding-right: 0.5rem;
+    }
+
+    .faq-answer a {
+      color: #106b5e;
+      text-decoration: underline;
+    }
+
+    /* 底部链接 */
+    .footer-links {
+      border-top: 1px solid #c0dbd9;
+      padding: 2.2rem 0 3.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem 3rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .footer-links a {
+      color: #1c6d61;
+      text-decoration: none;
+      font-size: 0.95rem;
+      border-bottom: 1px dotted transparent;
+      transition: border-color 0.15s;
+    }
+
+    .footer-links a:hover {
+      border-bottom: 1px dotted #1c8d7a;
+    }
+
+    .footer-links .leyu-link {
+      font-weight: 500;
+      background: #d8eeea;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      border-bottom: none;
+    }
+
+    @media (min-width: 640px) {
+      .card-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (min-width: 900px) {
+      body {
+        padding: 0 2rem;
+      }
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      .card-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .essay-block {
+        padding: 2.8rem 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- hero -->
+  <section class="hero">
+    <h1>翻阅·对照·延伸<span> · leyu</span></h1>
+    <p>一处安静、中立的索引点，为日常查询、信息对照和知识延伸提供支持。不追赶热点，更关注条理与连续。</p>
+    <div class="meta-line">最新更新 · 2025 · 结构微调</div>
+  </section>
+
+  <!-- 优势 + 场景卡片 (网格) -->
+  <div class="card-grid">
+    <div class="card">
+      <h3>条目与对照</h3>
+      <p>将零散信息整理为可对照的条目，帮助你在不同来源间建立关联。适合快速预览、对比关键词与概念。</p>
+      <span class="tag">查询友好</span>
+    </div>
+    <div class="card">
+      <h3>延伸路径</h3>
+      <p>每个条目后附带适度延展的链接与参考方向，不打断阅读，但给有意深入的人留下路径。</p>
+      <span class="tag">适度扩展</span>
+    </div>
+    <div class="card">
+      <h3>低噪界面</h3>
+      <p>克制色彩与卡片式布局，减少视觉噪音。蓝绿色点缀仅在关键区分处出现，不影响长时间阅读。</p>
+      <span class="tag">护眼细节</span>
+    </div>
+    <div class="card">
+      <h3>每日一翻</h3>
+      <p>不定期更新条目，可能是术语辨析、数据摘要或一段叙述。不求覆盖所有领域，但求每次都有据可查。</p>
+      <span class="tag">节奏稳定</span>
+    </div>
+    <div class="card">
+      <h3>独立索引</h3>
+      <p>所有内容均经过编辑筛选与重新表述，不自动聚合、不复制原文，尝试提供另一种观察角度。</p>
+      <span class="tag">独立编辑</span>
+    </div>
+    <div class="card">
+      <h3>无感移动端</h3>
+      <p>从手机到桌面，卡片与文字流自动适配。信息层级不变，操作成本趋近于零。</p>
+      <span class="tag">响应式</span>
+    </div>
+  </div>
+
+  <!-- 说明/叙述区：延伸阅读的日常 -->
+  <div class="essay-block">
+    <h2>日常查询中的对照与延展</h2>
+    <p>
+      很多时候我们打开某个页面，只是为了快速确认一个名称、一组数据或一段背景。但单一信息往往孤立无援——<strong>对照</strong>让事实浮现，<strong>延伸</strong>让理解变厚。这也是搭建这个索引页的初衷：在浏览和查询之间留出一块可以来回踱步的地方。
+    </p>
+    <p>
+      比如你正在研究某个术语，可以直接在 <a href="https://portal-intl-leyu.com">leyu</a> 的条目区找到平行定义、时间线或相关文献的简短标注。不追求面面俱到，但每个条目都带着可继续翻查的线索。你大可以把它当作查询的起点，也可以只是路过时随意扫一眼。
+    </p>
+    <p>
+      另外，不定期更新的“延伸阅读”笔记会侧重不同侧面：可能是某个概念在不同领域里的差异，也可能是一段冷门却有趣的来源摘录。保持自然、克制，不把话说满，但尽量让索引本身变得可靠。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <section class="faq-summary">
+    <h2>常见查询 · 简答</h2>
+    <div class="faq-item">
+      <div class="faq-question">这里的条目和数据多久更新一次？</div>
+      <div class="faq-answer">日常条目视内容情况不定期修订，大块更新通常每月一次。你可以在 <a href="https://portal-intl-leyu.com">leyu</a> 的更新日志里看到变动摘要。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">可以转载或引用这里的条目内容吗？</div>
+      <div class="faq-answer">可以引用简短片段并注明来源，但不宜大量复制或重新包装。鼓励对照原文后再使用。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">索引范围是否有限定？</div>
+      <div class="faq-answer">目前以文化、科技、日常概念辨析为主，不涉及政治或医疗建议。具体范围可参考分类标签。</div>
+    </div>
+  </section>
+
+  <!-- 底部链接 -->
+  <footer class="footer-links">
+    <a href="#">关于这个索引</a>
+    <a href="#">条目归档</a>
+    <a href="#">延伸阅读笔记</a>
+    <a href="https://portal-intl-leyu.com" class="leyu-link">leyu</a>
+    <a href="#">反馈</a>
+  </footer>
+
+</div>
+</body>
+</html>
